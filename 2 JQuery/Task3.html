@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.buttons-container {	
+			text-align: center;
+			margin: auto;
+		}
+		.inputs-container {
+			width: 30%;
+			margin-left: 35%;
+		}
+		.field {
+			width: 100%;
+			margin-top: 10px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<div id="inputs" class="inputs-container">
+		<input type="text" class="field" id="field1">
+	</div>
+	<br>
+	<div id="buttons" class="buttons-container">
+		<button id = "add">+</button>
+		<button id = "delete">-</button>
+	</div>	
+	<script>
+	var inputsNumber = $("#inputs").length;
+	$('#add').on('click', function(e){
+		if (inputsNumber < 10)
+		{
+			inputsNumber++;
+			var id = "field" + inputsNumber;
+			$("#inputs").append("<input type='text' class='field' id='" + id + "'>");
+		}
+	});
+	$('#delete').on('click', function(e){
+		if (inputsNumber > 1)
+		{
+			$("#field" + inputsNumber).remove();
+			inputsNumber--;
+		}
+	});
+	</script>
+</body>
+</html>

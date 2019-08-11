@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.container {
+			text-align: center;
+			margin: auto;
+		}
+		.recoloring {
+			color:red;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<div id="links" class="container">
+		<p><a href="empty.html">Ссылка1</a></p> 
+		<p><a href="empty.html">Ссылка2</a></p> 
+		<p><a href="empty.html">Ссылка3</a></p> 
+		<p><a href="empty.html">Ссылка4</a></p> 
+		<p><a href="empty.html">Ссылка5</a></p> 
+		<p><a href="empty.html">Ссылка6</a></p> 
+		<p><a href="empty.html">Ссылка7</a></p> 
+		<p><a href="empty.html">Ссылка8</a></p> 
+		<p><a href="empty.html">Ссылка9</a></p> 
+		<p><a href="empty.html">Ссылка10</a></p>
+	</div>
+	<br>
+	<p style = "text-align: center;"><a id="link" href="javascript:void(0);">Ссылка11</a></p>
+	<script>
+	$('#link').click(function(){
+        $('#links a').addClass('recoloring');
+    });
+	</script>
+</body>
+</html>

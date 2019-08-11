@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.container {
+			text-align: center;
+			margin: auto;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div id = "text">Hello!</div>
+		<button id = "button">Show/hide</button>
+	</div>
+	<script>
+	$('#button').on('click', function(e){
+		$("#text").toggle();
+	});
+	</script>
+</body>
+</html>
