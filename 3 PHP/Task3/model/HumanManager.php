@@ -17,37 +17,34 @@ class HumanManager
     public function addHuman(Human $human)
     {
         array_push($this->humans, $human);
-        //$human -> show();
-        //$this->humans[] = $human;
     }
 
     public function deleteHuman($field, $meaning)
     {
-        for ($i = 0; $i < count($this->getHumans()); $i++)
+        foreach($this->getHumans() as $k=>$val)
         {
-            if ($this->getHumans()[$i][$field]==$meaning)
+            if($val->getField($field) == $meaning)
             {
-                array_splice($this->getHumans(), $i);
+                $human = $this->getHumans()[$k];
+                $human -> __destruct();
             }
         }
     }
 
     public function clear()
     {
-        //$humans = $this->getHumans();
-        //unset($humans);
-        //$this->setHumans(array());
         $this->humans = array();
     }
 
-    public function updateFile($path)
+    public function updateFile()
     {
         $json = "";
+        $filename = 'data/humans.json';
         $count = count($this->getHumans());
         for ($i = 0; $i < $count; $i++)
         {
             $human = $this->getHumans()[$i];
-            //$human -> show();
+            $human ->  show();
             if ($i != $count - 1)
             {
                 $json = $json . "\"". $i . "\"" . ": " . json_encode($human) . ", ";
@@ -57,8 +54,8 @@ class HumanManager
                 $json = $json . "\"". $i . "\"" . ": " . json_encode($human);
             }
         }
-        echo $json;
-        $file = fopen($path,"wa+");
+        $json = "{" . $json . "}\n";
+        $file = fopen($filename, 'w');
         fwrite($file, $json);
         fclose($file);
     }
@@ -71,6 +68,7 @@ class HumanManager
             for ($m = 0; $m < $count; $m++) {
                 $humans[$m]->show();
             }
+            echo nl2br("\n\n\n");
         }
         else {
             echo nl2br("\nEmpty collection.");

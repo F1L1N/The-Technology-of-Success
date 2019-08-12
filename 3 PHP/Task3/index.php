@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="load.php" method="post" enctype="multipart/form-data">
+    <form action="panel.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="file"/>
         <input type="submit" value="Submit">
     </form>

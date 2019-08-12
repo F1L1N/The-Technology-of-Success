@@ -28,19 +28,16 @@
         <textarea rows="10" cols="50" name="message" placeholder="Enter message:"></textarea>
         <input style = "width: 50%" type="submit" value="Send">
     </form>
-    <div id="response"></div>
 </div>
 <script>
     function send() {
         var message = $('#emailForm').serialize();
-        alert(message);
         $.ajax({
             type: 'POST',
             url: 'send.php',
             data: message,
             success: function(data) {
                 alert(data);
-                $('#response').html(data);
             },
             error:  function(xhr, str){
                 alert('Возникла ошибка: ' + xhr.responseCode);

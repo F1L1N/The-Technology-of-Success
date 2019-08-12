@@ -10,18 +10,44 @@ class Human implements JsonSerializable
         $a = func_get_args();
         $i = func_num_args();
         switch ($i) {
-        case 0:
-            $this->setFio("");
-            $this->setAge("");
-            $this->setProfession("");
-            break;
-        case 3:
-            $this->setFio($a[0]);
-            $this->setAge($a[1]);
-            $this->setProfession($a[2]);
-            break;
-        default:
-            break;
+            case 0:
+                $this->setFio("");
+                $this->setAge("");
+                $this->setProfession("");
+                break;
+            case 3:
+                $this->setFio($a[0]);
+                $this->setAge($a[1]);
+                $this->setProfession($a[2]);
+                break;
+            default:
+                break;
+        }
+    }
+
+    function __destruct()
+    {
+        $this->setFio(null);
+        $this->setAge(null);
+        $this->setProfession(null);
+        unset($this);
+    }
+
+    public function getField($field)
+    {
+        switch ($field) {
+            case "fio":
+                return $this->getFio();
+                break;
+            case "age":
+                return $this->getAge();
+                break;
+            case "profession":
+                return $this->getProfession();
+                break;
+            default:
+                return null;
+                break;
         }
     }
 
@@ -66,10 +92,17 @@ class Human implements JsonSerializable
 
     public function show()
     {
-        echo nl2br("\n------------------------------".
-                         "\nFIO: ".$this->fio.
-                         "\nAGE: ".$this->age.
-                         "\nPROFESSION: ".$this->profession.
-                         "\n------------------------------");
+        if ($this->getFio() == null && $this->getAge() == null && $this->getProfession() == null)
+        {
+            echo "";
+        }
+        else
+        {
+            echo nl2br("\n------------------------------".
+                             "\nFIO: ".$this->getFio().
+                             "\nAGE: ".$this->getAge().
+                             "\nPROFESSION: ".$this->getProfession().
+                             "\n------------------------------");
+        }
     }
 }
